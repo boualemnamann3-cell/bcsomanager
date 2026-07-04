@@ -1,0 +1,22 @@
+[
+  {
+    "nom": "Patrouille",
+    "etat": "Active"
+  },
+  {
+    "nom": "CID",
+    "etat": "Active"
+  },
+  {
+    "nom": "MARY / HP",
+    "etat": "Active"
+  },
+  {
+    "nom": "K9",
+    "etat": "En sommeil"
+  },
+  {
+    "nom": "AMD",
+    "etat": "En sommeil"
+  }
+]

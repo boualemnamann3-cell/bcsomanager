@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "nom": "Glock 17",
+        "categorie": "Arme de service",
+        "numeroSerie": "BCSO-001",
+        "etat": "Disponible"
+    },
+    {
+        "id": 2,
+        "nom": "Taser X26",
+        "categorie": "Arme non létale",
+        "numeroSerie": "BCSO-002",
+        "etat": "Disponible"
+    },
+    {
+        "id": 3,
+        "nom": "Matraque",
+        "categorie": "Équipement",
+        "numeroSerie": "BCSO-003",
+        "etat": "Disponible"
+    },
+    {
+        "id": 4,
+        "nom": "Carabine AR-15",
+        "categorie": "Arme longue",
+        "numeroSerie": "BCSO-004",
+        "etat": "Disponible"
+    },
+    {
+        "id": 5,
+        "nom": "Fusil à pompe",
+        "categorie": "Arme longue",
+        "numeroSerie": "BCSO-005",
+        "etat": "Disponible"
+    },
+    {
+        "id": 6,
+        "nom": "Bouclier balistique",
+        "categorie": "Protection",
+        "numeroSerie": "BCSO-006",
+        "etat": "Disponible"
+    },
+    {
+        "id": 7,
+        "nom": "Lampe tactique",
+        "categorie": "Équipement",
+        "numeroSerie": "BCSO-007",
+        "etat": "Disponible"
+    },
+    {
+        "id": 8,
+        "nom": "Radio de service",
+        "categorie": "Communication",
+        "numeroSerie": "BCSO-008",
+        "etat": "Disponible"
+    },
+    {
+        "id": 9,
+        "nom": "Gilet pare-balles",
+        "categorie": "Protection",
+        "numeroSerie": "BCSO-009",
+        "etat": "Disponible"
+    },
+    {
+        "id": 10,
+        "nom": "Caméra piéton",
+        "categorie": "Équipement",
+        "numeroSerie": "BCSO-010",
+        "etat": "Disponible"
+    }
+]

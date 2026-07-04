@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCSO Manager - Gestion des Agents</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        <h2>🚔 BCSO</h2>
+        <p>Manager V2</p>
+    </div>
+
+    <hr>
+
+    <a href="dashboard.html">🏠 Tableau de bord</a>
+    <a href="agents.html">👮 Agents</a>
+    <a href="recrutement.html">📄 Recrutement</a>
+    <a href="formations.html">🎓 Académie</a>
+    <a href="unites.html">🏛 Unités</a>
+    <a href="armurerie.html">🔫 Armurerie</a>
+    <a href="vehicules.html">🚓 Véhicules</a>
+    <a href="rapports.html">📋 Rapports</a>
+    <a href="statistiques.html">📊 Statistiques</a>
+    <a href="parametres.html">⚙ Administration</a>
+
+</div>
+
+<div class="content">
+
+    <h1>👮 Gestion des Agents</h1>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="🔍 Rechercher un agent...">
+
+    <br><br>
+
+<button id="nouvelAgent" onclick="ouvrirPopup()">
+    ➕ Nouvel Agent
+</button>
+
+    <br><br>
+
+    <table class="agent-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Matricule</th>
+
+                <th>Nom</th>
+
+                <th>Grade</th>
+
+                <th>Unité</th>
+
+                <th>Statut</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="listeAgents">
+
+        </tbody>
+
+    </table>
+
+</div>
+<!-- Fenêtre Ajouter un agent -->
+
+<div id="popupAgent" class="popup">
+
+<div class="popup-content">
+
+<h2>➕ Nouvel Agent</h2>
+<input type="text" id="newTelephone" placeholder="Téléphone">
+
+<input type="text" id="newBadge" placeholder="Numéro de badge">
+
+<input type="date" id="newDateEntree">
+
+<input type="text" id="newMatricule" placeholder="Matricule">
+
+<input type="text" id="newNom" placeholder="Nom RP">
+
+<select id="newGrade">
+
+<option>Rookie</option>
+<option>Deputy I</option>
+<option>Deputy II</option>
+<option>Deputy III</option>
+<option>Deputy Senior</option>
+<option>Sergeant I</option>
+<option>Sergeant II</option>
+<option>Lieutenant</option>
+<option>Capitaine</option>
+<option>Commandant</option>
+<option>Sheriff Adjoint</option>
+
+</select>
+
+<select id="newUnite">
+
+<option>Commandement</option>
+<option>Patrouille</option>
+<option>CID</option>
+<option>MARY / HP</option>
+<option>K9</option>
+<option>AMD</option>
+
+</select>
+
+<button onclick="enregistrerAgent()">
+💾 Enregistrer
+</button>
+
+<button onclick="fermerPopup()">
+❌ Fermer
+</button>
+
+</div>
+
+</div>
+<script src="js/database.js"></script>
+<script src="js/agents.js"></script>
+
+</body>
+
+</html>

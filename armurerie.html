@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BCSO Manager - Armurerie</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">
+
+<h2>🚔 BCSO</h2>
+
+<p>Manager V2</p>
+
+</div>
+
+<hr>
+
+<a href="dashboard.html">🏠 Tableau de bord</a>
+<a href="agents.html">👮 Agents</a>
+<a href="armurerie.html">🔫 Armurerie</a>
+<a href="formations.html">🎓 Académie</a>
+<a href="unites.html">🏛 Unités</a>
+<a href="vehicules.html">🚓 Véhicules</a>
+<a href="rapports.html">📋 Rapports</a>
+<a href="statistiques.html">📊 Statistiques</a>
+<a href="parametres.html">⚙ Administration</a>
+
+</div>
+
+<div class="content">
+
+<h1>🔫 Armurerie BCSO</h1>
+
+<input
+type="text"
+id="searchArme"
+placeholder="🔍 Rechercher une arme...">
+
+<br><br>
+
+<button id="ajouterArme">
+➕ Ajouter une arme
+</button>
+
+<br><br>
+
+<table class="agent-table">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Arme</th>
+
+<th>Catégorie</th>
+
+<th>N° Série</th>
+
+<th>État</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="listeArmes">
+
+<tr>
+
+<td>1</td>
+
+<td>Glock 17</td>
+
+<td>Arme de service</td>
+
+<td>BCSO-001</td>
+
+<td>Disponible</td>
+
+<td>
+
+<button>👮 Attribuer</button>
+
+<button>✏️</button>
+
+<button>❌</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+
+<td>Taser X26</td>
+
+<td>Arme non létale</td>
+
+<td>BCSO-002</td>
+
+<td>Disponible</td>
+
+<td>
+
+<button>👮 Attribuer</button>
+
+<button>✏️</button>
+
+<button>❌</button>
+
+</td>
+
+</tr>
+<!-- POPUP ATTRIBUTION -->
+
+<div id="popupAttribution" class="popup">
+
+    <div class="popup-content">
+
+        <h2>👮 Attribuer une arme</h2>
+
+        <label>Agent</label>
+
+        <select id="listeAgentsArme">
+
+        </select>
+
+        <br><br>
+
+        <label>Date d'attribution</label>
+
+        <input type="date" id="dateAttribution">
+
+        <br><br>
+
+        <label>Commentaire</label>
+
+        <textarea
+            id="commentaireArme"
+            rows="4"
+            placeholder="Observation..."></textarea>
+
+        <br><br>
+
+        <button onclick="validerAttribution()">
+
+            💾 Attribuer
+
+        </button>
+
+        <button onclick="fermerPopupAttribution()">
+
+            ❌ Annuler
+
+        </button>
+
+    </div>
+
+</div>
+</tbody>
+<!-- POPUP ATTRIBUTION -->
+
+<div id="popupAttribution" class="popup" style="display:none;">
+
+    <div class="popup-content">
+
+        <h2>👮 Attribuer une arme</h2>
+
+        <label>Agent</label>
+
+        <select id="listeAgentsArme">
+            <option>Choisir un agent</option>
+        </select>
+
+        <br><br>
+
+        <label>Date d'attribution</label>
+
+        <input type="date" id="dateAttribution">
+
+        <br><br>
+
+        <label>Commentaire</label>
+
+        <textarea
+            id="commentaireArme"
+            rows="4"
+            placeholder="Observation..."></textarea>
+
+        <br><br>
+
+        <button onclick="validerAttribution()">
+            💾 Attribuer
+        </button>
+
+        <button onclick="fermerPopupAttribution()">
+            ❌ Annuler
+        </button>
+
+    </div>
+
+</div>
+<script src="js/armurerie.js"></script>
+</table>
+
+</div>
+
+<!-- POPUP ATTRIBUTION -->
+<div id="popupAttribution" class="popup" style="display:none;">
+    ...
+</div>
+
+<script src="js/database.js"></script>
+<script src="js/armurerie.js"></script>
+
+</body>
+</html>

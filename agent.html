@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BCSO Manager | Dossier Agent</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        <h2>🚔 BCSO</h2>
+        <p>Manager V2</p>
+    </div>
+
+    <hr>
+
+    <a href="dashboard.html">🏠 Tableau de bord</a>
+    <a href="agents.html">👮 Gestion des Agents</a>
+    <a href="recrutement.html">📄 Recrutement</a>
+    <a href="formations.html">🎓 Académie</a>
+    <a href="unites.html">🏛 Unités</a>
+    <a href="armurerie.html">🔫 Armurerie</a>
+    <a href="vehicules.html">🚓 Véhicules</a>
+    <a href="rapports.html">📋 Rapports</a>
+    <a href="statistiques.html">📊 Statistiques</a>
+    <a href="parametres.html">⚙ Administration</a>
+
+</div>
+
+<div class="content">
+
+<h1>📁 Dossier Agent</h1>
+
+<div class="profil">
+
+<div class="photo">
+
+<img src="images/avatar.png" id="photoAgent" width="180">
+
+</div>
+
+<div class="infos">
+
+<h2 id="nomAgent">Nom de l'agent</h2>
+
+<p><strong>🆔 Matricule :</strong> <span id="matriculeAgent"></span></p>
+
+<p><strong>🎖 Grade :</strong> <span id="gradeAgent"></span></p>
+
+<p><strong>🏛 Unité :</strong> <span id="uniteAgent"></span></p>
+
+<p><strong>📌 Statut :</strong> <span id="statutAgent"></span></p>
+
+<p><strong>📞 Téléphone :</strong> <span id="telephoneAgent">Non renseigné</span></p>
+
+<p><strong>📅 Date d'entrée :</strong> <span id="dateEntreeAgent">Non renseignée</span></p>
+
+<p><strong>🏅 Badge :</strong> <span id="badgeAgent">Non attribué</span></p>
+
+<p><strong>🩸 Groupe sanguin :</strong> <span id="groupeAgent">Inconnu</span></p>
+
+<p><strong>📧 Email :</strong> <span id="emailAgent">Aucun</span></p>
+
+</div>
+
+</div>
+
+<div class="dashboard">
+
+<div class="box">
+
+<h3>🔫 Armement</h3>
+
+<ul id="armes">
+
+</ul>
+
+<button onclick="ajouterArme()">
+➕ Ajouter une arme
+</button>
+
+</div>
+
+<div class="box">
+
+<h3>🚓 Véhicule</h3>
+
+<ul id="vehicules">
+
+<li>Aucun véhicule attribué</li>
+
+</ul>
+
+</div>
+
+<div class="box">
+
+<h3>🎓 Formations</h3>
+
+<ul id="formations">
+
+<li>Cadet</li>
+<li>Patrouille</li>
+
+</ul>
+
+</div>
+
+<div class="box">
+
+<h3>⚠ Sanctions</h3>
+
+<ul id="sanctions">
+
+<li>Aucune sanction</li>
+
+</ul>
+
+</div>
+
+<div class="box">
+
+<h3>🏆 Récompenses</h3>
+
+<ul id="recompenses">
+
+<li>Aucune récompense</li>
+
+</ul>
+
+</div>
+
+<div class="box">
+
+<h3>📋 Rapports</h3>
+
+<ul id="rapports">
+
+<li>Aucun rapport</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<br>
+
+<button>✏ Modifier le dossier</button>
+
+<button>🖨 Imprimer</button>
+
+<button onclick="window.location.href='agents.html'">
+⬅ Retour à la liste
+</button>
+
+</div>
+
+<script src="js/agent.js"></script>
+
+</body>
+
+</html>
