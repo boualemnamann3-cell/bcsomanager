@@ -80,7 +80,7 @@ async function chargerUnites() {
 
 
         const reponse = await fetch(
-            "http://localhost:3000/api/unites"
+            "/api/unites"
         );
 
 
@@ -378,7 +378,7 @@ async function enregistrerUnite(e) {
 
         const reponse = await fetch(
 
-            "http://localhost:3000/api/unites",
+            "/api/unites",
 
             {
 
@@ -489,7 +489,7 @@ async function supprimerUnite(id) {
 
         const reponse = await fetch(
 
-            `http://localhost:3000/api/unites/${id}`,
+            `/api/unites/${id}`,
 
             {
 
@@ -542,3 +542,4 @@ async function supprimerUnite(id) {
 
 
 }
+

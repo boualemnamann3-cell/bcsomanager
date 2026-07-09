@@ -56,7 +56,7 @@ async function chargerAgents() {
     try {
 
         const reponse = await fetch(
-            "http://localhost:3000/api/agents"
+            "/api/agents"
         );
 
         agents = await reponse.json();
@@ -431,9 +431,9 @@ const agent = {
 
     const url = agentEnModification
 
-        ? `http://localhost:3000/api/agents/${agentEnModification.id}`
+        ? `/api/agents/${agentEnModification.id}`
 
-        : "http://localhost:3000/api/agents";
+        : "/api/agents";
 
     const methode = agentEnModification ? "PUT" : "POST";
 
@@ -551,7 +551,7 @@ async function supprimerAgent(id) {
 
         const reponse = await fetch(
 
-            `http://localhost:3000/api/agents/${id}`,
+            `/api/agents/${id}`,
 
             {
 
@@ -614,7 +614,7 @@ async function changerUnite(id, colonne, valeur) {
 
         const reponse = await fetch(
 
-            `http://localhost:3000/api/agents/${id}/unite`,
+            `/api/agents/${id}/unite`,
 
             {
 
@@ -674,7 +674,7 @@ console.log("Agent :", agent.id);
     try {
 
         const reponse = await fetch(
-            `http://localhost:3000/api/attributions/${agent.id}`
+            `/api/attributions/${agent.id}`
         );
 
         const armes = await reponse.json();
@@ -720,3 +720,4 @@ console.log("Armes reçues :", armes);
 }
 
 chargerArmesAgent();
+

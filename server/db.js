@@ -447,3 +447,4 @@ migrationsRapports.forEach(sql=>{
 
 });
 module.exports = db;
+

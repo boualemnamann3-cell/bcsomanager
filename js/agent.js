@@ -126,7 +126,7 @@ async function chargerArmesAgent() {
     try {
 
         const reponse = await fetch(
-            `http://localhost:3000/api/attributions/${agent.id}`
+            `/api/attributions/${agent.id}`
         );
 
         const armes = await reponse.json();
@@ -199,7 +199,7 @@ async function restituerArme(id){
 
         const reponse = await fetch(
 
-            `http://localhost:3000/api/attributions/supprimer/${id}`,
+            `/api/attributions/supprimer/${id}`,
 
             {
 
@@ -239,7 +239,7 @@ async function archiverAgent() {
     try {
 
         const reponse = await fetch(
-            `http://localhost:3000/api/agents/${agent.id}/archive`,
+            `/api/agents/${agent.id}/archive`,
             {
                 method: "PUT"
             }
@@ -268,3 +268,4 @@ function toggleMenuActions() {
         .toggle("hidden");
 
 }
+

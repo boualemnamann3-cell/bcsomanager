@@ -120,3 +120,4 @@ function fermerCasier() {
     document.getElementById("popupCasier").style.display = "none";
 
 }
+

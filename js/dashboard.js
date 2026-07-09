@@ -488,3 +488,4 @@ function afficherAnnonces() {
 
 document.getElementById("roleUtilisateur").textContent =
     utilisateur.role;
+

@@ -83,7 +83,7 @@ function envoyerCandidature(){
 
     }
 
-fetch("http://localhost:3000/api/candidatures", {
+fetch("/api/candidatures", {
 
     method: "POST",
 
@@ -311,7 +311,7 @@ async function accepterCandidature(index){
 
     const candidature = candidatures[index];
 
-    await fetch(`http://localhost:3000/api/candidatures/${candidature.id}`,{
+    await fetch(`/api/candidatures/${candidature.id}`,{
 
         method:"PUT",
 
@@ -337,7 +337,7 @@ async function refuserCandidature(index){
 
     const candidature = candidatures[index];
 
-    await fetch(`http://localhost:3000/api/candidatures/${candidature.id}`,{
+    await fetch(`/api/candidatures/${candidature.id}`,{
 
         method:"PUT",
 
@@ -366,7 +366,7 @@ async function supprimerCandidature(index){
 
     const candidature = candidatures[index];
 
-    await fetch(`http://localhost:3000/api/candidatures/${candidature.id}`,{
+    await fetch(`/api/candidatures/${candidature.id}`,{
 
         method:"DELETE"
 
@@ -383,7 +383,7 @@ async function chargerDepuisServeur() {
 
     try {
 
-        const reponse = await fetch("http://localhost:3000/api/candidatures");
+        const reponse = await fetch("/api/candidatures");
 
         candidatures = await reponse.json();
 
@@ -398,3 +398,4 @@ async function chargerDepuisServeur() {
     }
 
 }
+

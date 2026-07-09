@@ -84,7 +84,7 @@ async function chargerArmes() {
 
 
         const reponse = await fetch(
-            "http://localhost:3000/api/armes"
+            "/api/armes"
         );
 
 
@@ -360,9 +360,9 @@ async function enregistrerArme(e) {
 
     const url = armeEnModification
 
-        ? `http://localhost:3000/api/armes/${armeEnModification.id}`
+        ? `/api/armes/${armeEnModification.id}`
 
-        : "http://localhost:3000/api/armes";
+        : "/api/armes";
 
 
 
@@ -564,7 +564,7 @@ async function supprimerArme(id) {
 
         const reponse = await fetch(
 
-            `http://localhost:3000/api/armes/${id}`,
+            `/api/armes/${id}`,
 
             {
 
@@ -628,7 +628,7 @@ async function ouvrirAttribution(id){
 
     try{
 
-        const reponse = await fetch("http://localhost:3000/api/agents");
+        const reponse = await fetch("/api/agents");
 
         const agents = await reponse.json();
 
@@ -689,7 +689,7 @@ async function attribuerArme() {
     try {
 
         const reponse = await fetch(
-            "http://localhost:3000/api/attributions",
+            "/api/attributions",
             {
                 method: "POST",
 
@@ -735,3 +735,4 @@ async function attribuerArme() {
     }
 
 }
+

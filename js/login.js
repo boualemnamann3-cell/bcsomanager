@@ -6,7 +6,7 @@ async function connexion() {
 
     try {
 
-        const reponse = await fetch("http://localhost:3000/api/auth/login", {
+        const reponse = await fetch("/api/auth/login", {
 
             method: "POST",
 
@@ -44,3 +44,4 @@ async function connexion() {
     }
 
 }
+

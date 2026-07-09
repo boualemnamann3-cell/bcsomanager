@@ -2,7 +2,7 @@ async function chargerComptes() {
 
     try {
 
-        const reponse = await fetch("http://localhost:3000/api/agents");
+        const reponse = await fetch("/api/agents");
 
         const agents = await reponse.json();
 
@@ -77,3 +77,4 @@ function copier(valeur) {
 }
 
 chargerComptes();
+

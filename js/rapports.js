@@ -2,7 +2,7 @@
    BCSO MANAGER V2 - RAPPORTS
 ========================================== */
 
-const API = "http://localhost:3000/api/rapports";
+const API = "/api/rapports";
 
 const utilisateur =
 JSON.parse(localStorage.getItem("utilisateur")) || {};
@@ -1010,3 +1010,4 @@ setInterval(() => {
     chargerRapports();
 
 },30000);
+

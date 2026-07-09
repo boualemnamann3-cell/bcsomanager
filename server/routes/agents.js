@@ -336,7 +336,7 @@ async function changerUnite(id, colonne, valeur) {
     try {
 
         const reponse = await fetch(
-            `http://localhost:3000/api/agents/${id}`,
+            `/api/agents/${id}`,
             {
 
                 method: "PUT",
@@ -650,3 +650,4 @@ router.put("/:id/archive", (req, res) => {
 
 });
 module.exports = router;
+

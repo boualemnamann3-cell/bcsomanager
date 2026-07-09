@@ -53,3 +53,4 @@ router.get("/recherche/:nom", (req, res) => {
 });
 console.log("✅ Route infractions chargée");
 module.exports = router;
+

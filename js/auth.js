@@ -26,3 +26,4 @@ function deconnexion() {
     localStorage.removeItem("bcso_admin");
     window.location.href = "login.html";
 }
+
