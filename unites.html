@@ -1,94 +1,130 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>BCSO Manager - Unités</title>
 
-<link rel="stylesheet" href="css/style.css">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BCSO Manager | Unités</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="sidebar">
+<div class="dashboard">
 
-<h2>🚔 BCSO</h2>
+    <div id="sidebar"></div>
 
-<a href="dashboard.html">🏠 Tableau de bord</a>
-<a href="agents.html">👮 Agents</a>
-<a href="unites.html">🏛 Unités</a>
-<a href="formations.html">🎓 Formations</a>
-<a href="armurerie.html">🔫 Armurerie</a>
-<a href="rapports.html">📄 Rapports</a>
+    <main class="content">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Gestion des unités</h1>
+
+                <p>Administration des unités du BCSO</p>
+
+            </div>
+
+            <button class="btn-principal" onclick="ouvrirModal()">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Ajouter une unité
+
+            </button>
+
+        </header>
+
+        <section class="bloc">
+
+            <div id="listeUnites">
+
+                <p class="center">
+                    Aucune unité enregistrée.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<!-- ==========================
+     MODAL AJOUT UNITÉ
+========================== -->
+
+<div id="modalUnite" class="modal hidden">
+
+    <div class="modal-content">
+
+        <h2>
+            <i class="fa-solid fa-shield-halved"></i>
+            Ajouter une unité
+        </h2>
+
+        <form id="formUnite">
+
+            <label>Nom de l'unité</label>
+
+            <input
+                type="text"
+                id="nomUnite"
+                placeholder="Ex : K9"
+                required>
+
+            <label>Description</label>
+
+            <textarea
+                id="descriptionUnite"
+                placeholder="Description de l'unité"></textarea>
+
+            <label>Chef de l'unité</label>
+
+            <input
+                type="text"
+                id="chefUnite"
+                placeholder="Nom du responsable">
+
+            <label>Couleur</label>
+
+            <input
+                type="color"
+                id="couleurUnite"
+                value="#c4a000">
+
+            <button
+                class="btn-principal"
+                type="submit">
+
+                Créer l'unité
+
+            </button>
+
+            <button
+                type="button"
+                class="btn-secondaire"
+                onclick="fermerModal()">
+
+                Annuler
+
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
 
-<div class="content">
-
-<h1>Gestion des unités</h1>
-
-<div class="card">
-
-<h2>🕵️ CID (Criminal Investigations Division)</h2>
-
-<p><b>Statut :</b> ✅ Active</p>
-
-<p>Enquêtes criminelles</p>
-
-<p>Investigations complexes</p>
-
-<p>Suivi des dossiers</p>
-
-<p>Groupe d'intervention</p>
-
-</div>
-
-<div class="card">
-
-<h2>🚔 MARY / HP</h2>
-
-<p><b>Statut :</b> ✅ Active</p>
-
-<p>Fusion des unités MARY et HP.</p>
-
-</div>
-
-<div class="card">
-
-<h2>🐕 K9</h2>
-
-<p><b>Statut :</b> 🟡 En sommeil</p>
-
-</div>
-
-<div class="card">
-
-<h2>🎯 AMD</h2>
-
-<p><b>Statut :</b> 🟡 En sommeil</p>
-
-<p>En attente d'un Sub Leader.</p>
-
-</div>
-
-<div class="card">
-
-<h2>❌ SRT</h2>
-
-<p>Unité dissoute.</p>
-
-</div>
-
-<div class="card">
-
-<h2>❌ MCD</h2>
-
-<p>Unité dissoute.</p>
-
-</div>
-
-</div>
+<script src="js/menu.js"></script>
+<script src="js/unites.js"></script>
 
 </body>
-
 </html>

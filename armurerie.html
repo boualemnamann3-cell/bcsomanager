@@ -4,229 +4,462 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BCSO Manager - Armurerie</title>
+
+<title>BCSO Manager | Armurerie</title>
+
 
 <link rel="stylesheet" href="css/style.css">
 
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
+
+
 
 <body>
 
-<div class="sidebar">
 
-<div class="logo">
+<div class="dashboard">
 
-<h2>🚔 BCSO</h2>
 
-<p>Manager V2</p>
+    <!-- MENU UNIQUE -->
+
+    <div id="sidebar"></div>
+
+
+
+    <!-- CONTENU -->
+
+    <main class="content">
+
+
+        <header class="topbar">
+
+
+            <div>
+
+                <h1>
+
+                    <i class="fa-solid fa-gun"></i>
+
+                    Armurerie
+
+                </h1>
+
+
+                <p>
+
+                    Gestion de l'équipement BCSO
+
+                </p>
+
+
+            </div>
+
+
+
+            <button 
+                class="btn-principal"
+                onclick="ajouterArme()">
+
+
+                <i class="fa-solid fa-plus"></i>
+
+                Ajouter une arme
+
+
+            </button>
+
+
+        </header>
+
+
+
+
+        <section class="bloc">
+
+
+            <h2>
+
+                <i class="fa-solid fa-boxes-stacked"></i>
+
+                Inventaire des armes
+
+            </h2>
+
+
+
+            <div id="listeArmes">
+
+
+                <p class="center">
+
+                    Chargement de l'armurerie...
+
+                </p>
+
+
+            </div>
+
+
+        </section>        <!-- MODAL AJOUT ARME -->
+
+
+       
+            <div class="modal-content">
+
+
+                <div class="modal-header">
+
+
+                    <h2>
+
+                        <i class="fa-solid fa-gun"></i>
+
+                        Ajouter une arme
+
+                    </h2>
+
+
+
+                    <button onclick="fermerModalArme()">
+
+                        &times;
+
+                    </button>
+
+
+                </div>
+
+
+
+
+                <form id="formArme">
+
+
+
+                    <div class="form-grid">
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+                                Nom de l'arme
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="nomArme"
+                                required>
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+                                Type
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="typeArme"
+                                placeholder="Pistolet, Fusil...">
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+                                Calibre
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="calibreArme">
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+                                Quantité
+                            </label>
+
+
+                            <input
+                                type="number"
+                                id="quantiteArme"
+                                value="1">
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                    <button
+                        class="btn-principal"
+                        type="submit">
+
+
+                        <i class="fa-solid fa-save"></i>
+
+
+                        Enregistrer
+
+
+
+                    </button>
+
+
+
+                </form>
+
+
+
+            </div>
+
+
+        </div>        <!-- MODAL AJOUT ARME -->
+
+
+        <div id="modalArme" class="modal hidden">
+
+
+            <div class="modal-content">
+
+
+                <div class="modal-header">
+
+
+                    <h2>
+
+                        <i class="fa-solid fa-gun"></i>
+
+                        Ajouter une arme
+
+                    </h2>
+
+
+
+                    <button onclick="fermerModalArme()">
+
+                        &times;
+
+                    </button>
+
+
+                </div>
+
+
+
+
+                <form id="formArme">
+
+
+
+                    <div class="form-grid">
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+                                Nom de l'arme
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="nomArme"
+                                required>
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+                                Type
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="typeArme"
+                                placeholder="Pistolet, Fusil...">
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+                                Calibre
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="calibreArme">
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+                                Quantité
+                            </label>
+
+
+                            <input
+                                type="number"
+                                id="quantiteArme"
+                                value="1">
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                    <button
+                        class="btn-principal"
+                        type="submit">
+
+
+                        <i class="fa-solid fa-save"></i>
+
+
+                        Enregistrer
+
+
+
+                    </button>
+
+
+
+                </form>
+
+
+
+            </div>
+
+
+        </div>        </section>
+
+
+    </main>
+
 
 </div>
 
-<hr>
 
-<a href="dashboard.html">🏠 Tableau de bord</a>
-<a href="agents.html">👮 Agents</a>
-<a href="armurerie.html">🔫 Armurerie</a>
-<a href="formations.html">🎓 Académie</a>
-<a href="unites.html">🏛 Unités</a>
-<a href="vehicules.html">🚓 Véhicules</a>
-<a href="rapports.html">📋 Rapports</a>
-<a href="statistiques.html">📊 Statistiques</a>
-<a href="parametres.html">⚙ Administration</a>
 
-</div>
+<!-- SCRIPTS -->
 
-<div class="content">
+<script src="js/menu.js"></script>
 
-<h1>🔫 Armurerie BCSO</h1>
+<script src="js/armurerie.js"></script>
 
-<input
-type="text"
-id="searchArme"
-placeholder="🔍 Rechercher une arme...">
+<!-- ========================================= -->
+<!-- MODAL ATTRIBUTION D'ARME -->
+<!-- ========================================= -->
 
-<br><br>
+<div id="modalAttribution" class="modal hidden">
 
-<button id="ajouterArme">
-➕ Ajouter une arme
-</button>
+    <div class="modal-content">
 
-<br><br>
+        <span class="close"
+              onclick="fermerAttribution()">&times;</span>
 
-<table class="agent-table">
+        <h2>Attribuer une arme</h2>
 
-<thead>
+        <input type="hidden" id="armeSelectionnee">
 
-<tr>
+        <div class="form-group">
 
-<th>ID</th>
+            <label>Agent</label>
 
-<th>Arme</th>
+            <select id="agentSelection"></select>
 
-<th>Catégorie</th>
+        </div>
 
-<th>N° Série</th>
+        <div class="form-group">
 
-<th>État</th>
+            <label>Quantité</label>
 
-<th>Actions</th>
+            <input
+                type="number"
+                id="quantiteAttribution"
+                value="1"
+                min="1">
 
-</tr>
+        </div>
 
-</thead>
+        <button
+            class="btn-principal"
+            onclick="attribuerArme()">
 
-<tbody id="listeArmes">
+            <i class="fa-solid fa-user-plus"></i>
 
-<tr>
-
-<td>1</td>
-
-<td>Glock 17</td>
-
-<td>Arme de service</td>
-
-<td>BCSO-001</td>
-
-<td>Disponible</td>
-
-<td>
-
-<button>👮 Attribuer</button>
-
-<button>✏️</button>
-
-<button>❌</button>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>2</td>
-
-<td>Taser X26</td>
-
-<td>Arme non létale</td>
-
-<td>BCSO-002</td>
-
-<td>Disponible</td>
-
-<td>
-
-<button>👮 Attribuer</button>
-
-<button>✏️</button>
-
-<button>❌</button>
-
-</td>
-
-</tr>
-<!-- POPUP ATTRIBUTION -->
-
-<div id="popupAttribution" class="popup">
-
-    <div class="popup-content">
-
-        <h2>👮 Attribuer une arme</h2>
-
-        <label>Agent</label>
-
-        <select id="listeAgentsArme">
-
-        </select>
-
-        <br><br>
-
-        <label>Date d'attribution</label>
-
-        <input type="date" id="dateAttribution">
-
-        <br><br>
-
-        <label>Commentaire</label>
-
-        <textarea
-            id="commentaireArme"
-            rows="4"
-            placeholder="Observation..."></textarea>
-
-        <br><br>
-
-        <button onclick="validerAttribution()">
-
-            💾 Attribuer
-
-        </button>
-
-        <button onclick="fermerPopupAttribution()">
-
-            ❌ Annuler
+            Attribuer
 
         </button>
 
     </div>
 
 </div>
-</tbody>
-<!-- POPUP ATTRIBUTION -->
-
-<div id="popupAttribution" class="popup" style="display:none;">
-
-    <div class="popup-content">
-
-        <h2>👮 Attribuer une arme</h2>
-
-        <label>Agent</label>
-
-        <select id="listeAgentsArme">
-            <option>Choisir un agent</option>
-        </select>
-
-        <br><br>
-
-        <label>Date d'attribution</label>
-
-        <input type="date" id="dateAttribution">
-
-        <br><br>
-
-        <label>Commentaire</label>
-
-        <textarea
-            id="commentaireArme"
-            rows="4"
-            placeholder="Observation..."></textarea>
-
-        <br><br>
-
-        <button onclick="validerAttribution()">
-            💾 Attribuer
-        </button>
-
-        <button onclick="fermerPopupAttribution()">
-            ❌ Annuler
-        </button>
-
-    </div>
-
-</div>
-<script src="js/armurerie.js"></script>
-</table>
-
-</div>
-
-<!-- POPUP ATTRIBUTION -->
-<div id="popupAttribution" class="popup" style="display:none;">
-    ...
-</div>
-
-<script src="js/database.js"></script>
-<script src="js/armurerie.js"></script>
 
 </body>
+
 </html>

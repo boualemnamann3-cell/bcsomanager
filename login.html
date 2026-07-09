@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCSO Manager | Connexion</title>
+
+    <title>Connexion | BCSO Life Santos</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
-<body>
+<body class="login-body">
 
-<div class="login-box">
+    <div class="login-box">
 
+        <img src="images/logo.png" class="login-logo" alt="Logo BCSO">
 
-    <h1>BCSO MANAGER</h1>
+        <h1>BCSO Life Santos</h1>
 
-    <p>Gestion des effectifs - Recrutement - Formations</p>
+        <p>Sheriff Management System</p>
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Code Administrateur">
+        <input
+            type="text"
+            id="username"
+            placeholder="Identifiant">
 
-    <button onclick="login()">
-        Connexion Administrateur
-    </button>
+        <input
+            type="password"
+            id="password"
+            placeholder="Mot de passe">
 
-    <button class="lecture" onclick="lecture()">
-        Continuer en lecture
-    </button>
+        <button onclick="connexion()">
 
-    <p id="message"></p>
+            <i class="fa-solid fa-right-to-bracket"></i>
 
-</div>
+            Se connecter
 
-<script src="js/auth.js"></script>
+        </button>
+
+    </div>
+
+    <script src="js/login.js"></script>
 
 </body>
+
 </html>

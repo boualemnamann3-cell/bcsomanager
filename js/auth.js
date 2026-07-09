@@ -1,19 +1,28 @@
+const ADMIN_PASSWORD = "BCSO2026";
+
 function login() {
     const password = document.getElementById("password").value;
     const message = document.getElementById("message");
 
-    const ADMIN_PASSWORD = "BCSO2026";
-
     if (password === ADMIN_PASSWORD) {
-        localStorage.setItem("admin", "true");
+        localStorage.setItem("bcso_admin", "true");
         window.location.href = "dashboard.html";
     } else {
         message.textContent = "Code administrateur incorrect.";
-        message.style.color = "red";
+        message.style.color = "#ff4d4d";
     }
 }
 
 function lecture() {
-    localStorage.setItem("admin", "false");
+    localStorage.setItem("bcso_admin", "false");
     window.location.href = "dashboard.html";
+}
+
+function estAdmin() {
+    return localStorage.getItem("bcso_admin") === "true";
+}
+
+function deconnexion() {
+    localStorage.removeItem("bcso_admin");
+    window.location.href = "login.html";
 }

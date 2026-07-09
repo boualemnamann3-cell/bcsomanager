@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BCSO Manager | Recrutement</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- MENU UNIQUE -->
+
+    <div id="sidebar"></div>
+
+
+
+    <!-- CONTENU -->
+
+    <main class="content">
+
+
+        <header class="topbar">
+
+
+            <div>
+
+                <h1>
+                    <i class="fa-solid fa-file-signature"></i>
+                    Recrutement
+                </h1>
+
+
+                <p>
+                    Gestion des candidatures BCSO
+                </p>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- STATISTIQUES -->
+
+
+        <section class="cards">
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                <h2 id="totalCandidatures">
+                    0
+                </h2>
+
+                <p>
+                    Total des candidatures
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-hourglass-half"></i>
+
+                <h2 id="attente">
+                    0
+                </h2>
+
+                <p>
+                    En attente
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h2 id="acceptees">
+                    0
+                </h2>
+
+                <p>
+                    Acceptées
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-circle-xmark"></i>
+
+                <h2 id="refusees">
+                    0
+                </h2>
+
+                <p>
+                    Refusées
+                </p>
+
+            </div>
+
+
+        </section>        <!-- FORMULAIRE CANDIDATURE -->
+
+        <section class="bloc">
+
+
+            <h2>
+
+                <i class="fa-solid fa-file-signature"></i>
+
+                Déposer une candidature
+
+            </h2>
+
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>Nom RP</label>
+
+                    <input type="text" id="nom">
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>Âge</label>
+
+                    <input type="number" id="age">
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>Discord</label>
+
+                    <input type="text" id="discord">
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>Temps de jeu sur le serveur</label>
+
+                    <input type="text" id="tempsJeu">
+
+                </div>
+
+
+
+                <div class="form-group full">
+
+                    <label>Disponibilités</label>
+
+                    <input type="text" id="disponibilite">
+
+                </div>
+
+
+            </div>
+
+
+
+            <hr>
+
+
+
+            <h2>
+
+                <i class="fa-solid fa-clipboard-question"></i>
+
+                Questionnaire
+
+            </h2>
+
+
+
+            <div class="form-group">
+
+                <label>
+                    1. Présentez-vous en quelques lignes.
+                </label>
+
+                <textarea id="q1"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    2. Pourquoi souhaitez-vous intégrer la BCSO ?
+                </label>
+
+                <textarea id="q2"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    3. Pourquoi devrions-nous vous recruter ?
+                </label>
+
+                <textarea id="q3"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    4. Que représente le rôle d'un Deputy ?
+                </label>
+
+                <textarea id="q4"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    5. Réaction face à un refus d'obtempérer ?
+                </label>
+
+                <textarea id="q5"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    6. Décrivez votre meilleure scène RP.
+                </label>
+
+                <textarea id="q6"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    7. Réaction face à un collègue non conforme ?
+                </label>
+
+                <textarea id="q7"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    8. Trois qualités d'un Deputy ?
+                </label>
+
+                <textarea id="q8"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    9. Expérience forces de l'ordre RP ?
+                </label>
+
+                <textarea id="q9"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    10. Un dernier mot pour le recrutement ?
+                </label>
+
+                <textarea id="q10"></textarea>
+
+            </div>
+
+
+
+            <button
+                class="btn-envoyer"
+                onclick="envoyerCandidature()">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Envoyer ma candidature
+
+            </button>
+
+
+        </section>        <!-- LISTE DES CANDIDATURES -->
+
+        <section class="bloc">
+
+
+            <div class="toolbar">
+
+
+                <input
+                    type="text"
+                    id="recherche"
+                    placeholder="🔍 Rechercher un candidat..."
+                    onkeyup="filtrerCandidatures()">
+
+
+
+                <select
+                    id="filtreStatut"
+                    onchange="filtrerCandidatures()">
+
+
+                    <option value="">
+                        Tous
+                    </option>
+
+
+                    <option value="En attente">
+                        En attente
+                    </option>
+
+
+                    <option value="Acceptée">
+                        Acceptée
+                    </option>
+
+
+                    <option value="Refusée">
+                        Refusée
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+
+            <h2>
+
+                <i class="fa-solid fa-users"></i>
+
+                Candidatures reçues
+
+            </h2>
+
+
+
+            <div id="listeCandidatures">
+
+                <p class="center">
+                    Aucune candidature pour le moment.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- MODAL CANDIDATURE -->
+
+<div id="modalCandidature" class="modal hidden">
+
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+
+            <h2>
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                Candidature BCSO
+
+            </h2>
+
+
+
+            <button
+                class="close-modal"
+                onclick="fermerModal()">
+
+
+                <i class="fa-solid fa-xmark"></i>
+
+
+            </button>
+
+
+        </div>
+
+
+
+        <div id="contenuModal"></div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<!-- SCRIPTS -->
+
+<script src="js/menu.js"></script>
+
+<script src="js/recrutement.js"></script>
+
+
+</body>
+
+</html>

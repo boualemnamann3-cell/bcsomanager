@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BCSO Manager | Rapports</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- MENU -->
+
+    <div id="sidebar"></div>
+
+    <!-- CONTENU -->
+
+    <main class="content">
+
+        <!-- EN-TÊTE -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    Centre des Rapports BCSO
+
+                </h1>
+
+                <p>
+
+                    Gestion complète des rapports d'intervention
+
+                </p>
+
+            </div>
+
+            <button
+                class="btn-principal"
+                onclick="nouveauRapport()">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Nouveau rapport
+
+            </button>
+
+        </header>
+
+        <!-- TABLEAU DE BORD -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                <h2 id="totalRapports">0</h2>
+
+                <p>Total rapports</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                <h2 id="totalAttente">0</h2>
+
+                <p>En attente</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h2 id="totalValides">0</h2>
+
+                <p>Validés</p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-box-archive"></i>
+
+                <h2 id="totalArchives">0</h2>
+
+                <p>Archivés</p>
+
+            </div>
+
+        </section>
+
+        <!-- BARRE D'ACTIONS -->
+
+        <section class="bloc">
+
+            <div class="toolbar">
+
+                <input
+                    type="text"
+                    id="rechercheRapport"
+                    placeholder="🔍 Rechercher un rapport...">
+
+                <select id="filtreStatut">
+
+                    <option value="">Tous les statuts</option>
+
+                    <option>Brouillon</option>
+
+                    <option>En attente</option>
+
+                    <option>Validé</option>
+
+                    <option>Archivé</option>
+
+                    <option>Refusé</option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- LISTE DES RAPPORTS -->
+
+        <section class="bloc">
+
+            <h2>
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                Rapports
+
+            </h2>
+
+            <div id="listeRapports">
+
+                <p class="center">
+
+                    Aucun rapport enregistré.
+
+                </p>
+
+            </div>
+
+        </section>
+        <!-- ==========================================
+     FORMULAIRE RAPPORT
+========================================== -->
+
+<section class="bloc">
+
+    <h2>
+
+        <i class="fa-solid fa-clipboard"></i>
+
+        Informations du rapport
+
+    </h2>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+<label>Numéro</label>
+
+<input
+    type="text"
+    id="numero"
+    readonly>>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Date</label>
+
+            <input
+            type="date"
+            id="date">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Heure</label>
+
+            <input
+            type="time"
+            id="heure">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>DEFCON</label>
+
+            <select id="defcon">
+
+                <option>DEFCON 5</option>
+                <option>DEFCON 4</option>
+                <option>DEFCON 3</option>
+                <option>DEFCON 2</option>
+                <option>DEFCON 1</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     AGENT
+========================================== -->
+
+<section class="bloc">
+
+    <h2>
+
+        <i class="fa-solid fa-user-shield"></i>
+
+        Agent rédacteur
+
+    </h2>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>Nom</label>
+
+            <input
+            type="text"
+            id="agent">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Matricule</label>
+
+            <input
+            type="text"
+            id="matricule">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Grade</label>
+
+            <input
+            type="text"
+            id="grade">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Unité</label>
+
+            <input
+            type="text"
+            id="unite">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     SUSPECT
+========================================== -->
+
+<section class="bloc">
+
+    <h2>
+
+        <i class="fa-solid fa-user-secret"></i>
+
+        Personne interpellée
+
+    </h2>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>Nom</label>
+
+            <input
+            type="text"
+            id="suspect_nom">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Prénom</label>
+
+            <input
+            type="text"
+            id="suspect_prenom">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Téléphone</label>
+
+            <input
+            type="text"
+            id="telephone">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     INTERVENTION
+========================================== -->
+
+<section class="bloc">
+
+    <h2>
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        Intervention
+
+    </h2>
+
+    <div class="form-group">
+
+        <label>Lieu</label>
+
+        <input
+        type="text"
+        id="lieu">
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Description complète</label>
+
+        <textarea
+        id="description"
+        rows="8"></textarea>
+
+    </div>
+
+</section>
+<!-- =====================================
+     INTERVENTION
+====================================== -->
+
+<section class="bloc">
+
+    <h2>
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        Détails de l'intervention
+
+    </h2>
+
+    <div class="form-group">
+
+        <label>Lieu</label>
+
+        <input type="text" id="lieu">
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Fouille</label>
+
+        <textarea id="fouille" rows="3"></textarea>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Objets trouvés</label>
+
+        <textarea id="objets_trouves" rows="3"></textarea>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Agents présents</label>
+
+        <textarea id="agents_presents" rows="3"></textarea>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Description complète des faits</label>
+
+        <textarea
+            id="description"
+            rows="10"></textarea>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     INFRACTIONS
+====================================== -->
+
+<section class="bloc">
+
+    <h2>
+
+        <i class="fa-solid fa-scale-balanced"></i>
+
+        Code pénal LS
+
+    </h2>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>Infractions retenues</label>
+
+            <textarea
+                id="infractions"
+                rows="8"></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Amende</label>
+
+            <input
+                type="number"
+                id="amende"
+                value="0">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Prison (mois)</label>
+
+            <input
+                type="number"
+                id="prison"
+                value="0">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     VALIDATION
+====================================== -->
+
+<section class="bloc">
+
+    <h2>
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        Validation
+
+    </h2>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>Statut</label>
+
+            <select id="statut">
+
+                <option>Brouillon</option>
+                <option>En attente</option>
+                <option>Validé</option>
+                <option>Archivé</option>
+                <option>Refusé</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Validation</label>
+
+            <input
+                type="text"
+                id="validation">
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Commentaire État-Major</label>
+
+        <textarea
+            id="commentaire"
+            rows="4"></textarea>
+
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+
+        <button
+            class="btn-principal"
+            onclick="enregistrerRapport()">
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Enregistrer
+
+        </button>
+
+        <button
+            class="btn-principal"
+            onclick="ouvrirRapport()">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            Aperçu
+
+        </button>
+
+        <button
+            class="btn-principal"
+            onclick="imprimerRapport()">
+
+            <i class="fa-solid fa-print"></i>
+
+            Imprimer
+
+        </button>
+
+    </div>
+
+</section>
+<!-- =====================================
+     MODAL APERÇU RAPPORT
+====================================== -->
+
+<div id="modalRapport" class="modal hidden">
+
+    <div class="modal-content modal-xl">
+
+        <div class="modal-header">
+
+            <h2>
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                Aperçu du rapport
+
+            </h2>
+
+            <button
+                class="btn-action"
+                onclick="fermerRapport()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div
+            id="contenuRapport"
+            style="
+                white-space:pre-wrap;
+                font-family:monospace;
+                max-height:70vh;
+                overflow:auto;
+            ">
+
+        </div>
+
+        <div
+            style="
+                margin-top:20px;
+                display:flex;
+                gap:10px;
+                justify-content:flex-end;
+            ">
+
+            <button
+                class="btn-principal"
+                onclick="imprimerRapport()">
+
+                <i class="fa-solid fa-print"></i>
+
+                Imprimer
+
+            </button>
+
+            <button
+                class="btn-principal"
+                onclick="fermerRapport()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+                Fermer
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    </main>
+
+</div>
+
+<script src="js/menu.js"></script>
+
+<script src="js/rapports.js"></script>
+
+</body>
+
+</html>

@@ -4,164 +4,348 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BCSO Manager | Dossier Agent</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>Fiche Agent | BCSO Manager</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="sidebar">
-
-    <div class="logo">
-        <h2>🚔 BCSO</h2>
-        <p>Manager V2</p>
-    </div>
-
-    <hr>
-
-    <a href="dashboard.html">🏠 Tableau de bord</a>
-    <a href="agents.html">👮 Gestion des Agents</a>
-    <a href="recrutement.html">📄 Recrutement</a>
-    <a href="formations.html">🎓 Académie</a>
-    <a href="unites.html">🏛 Unités</a>
-    <a href="armurerie.html">🔫 Armurerie</a>
-    <a href="vehicules.html">🚓 Véhicules</a>
-    <a href="rapports.html">📋 Rapports</a>
-    <a href="statistiques.html">📊 Statistiques</a>
-    <a href="parametres.html">⚙ Administration</a>
-
-</div>
-
-<div class="content">
-
-<h1>📁 Dossier Agent</h1>
-
-<div class="profil">
-
-<div class="photo">
-
-<img src="images/avatar.png" id="photoAgent" width="180">
-
-</div>
-
-<div class="infos">
-
-<h2 id="nomAgent">Nom de l'agent</h2>
-
-<p><strong>🆔 Matricule :</strong> <span id="matriculeAgent"></span></p>
-
-<p><strong>🎖 Grade :</strong> <span id="gradeAgent"></span></p>
-
-<p><strong>🏛 Unité :</strong> <span id="uniteAgent"></span></p>
-
-<p><strong>📌 Statut :</strong> <span id="statutAgent"></span></p>
-
-<p><strong>📞 Téléphone :</strong> <span id="telephoneAgent">Non renseigné</span></p>
-
-<p><strong>📅 Date d'entrée :</strong> <span id="dateEntreeAgent">Non renseignée</span></p>
-
-<p><strong>🏅 Badge :</strong> <span id="badgeAgent">Non attribué</span></p>
-
-<p><strong>🩸 Groupe sanguin :</strong> <span id="groupeAgent">Inconnu</span></p>
-
-<p><strong>📧 Email :</strong> <span id="emailAgent">Aucun</span></p>
-
-</div>
-
-</div>
-
 <div class="dashboard">
 
-<div class="box">
+    <main class="content">
 
-<h3>🔫 Armement</h3>
+        <section class="bloc">
 
-<ul id="armes">
+            <div class="profil">
 
-</ul>
+                <div class="photo">
 
-<button onclick="ajouterArme()">
-➕ Ajouter une arme
+                    <img id="photoAgent"
+                         src="images/default-agent.png"
+                         alt="Agent">
+
+                </div>
+
+                <div class="infos">
+
+                    <h2 id="nomAgent"></h2>
+
+                    <p>
+
+                        <strong>Matricule :</strong>
+
+                        <span id="matriculeAgent"></span>
+
+                    </p>
+
+                    <p>
+
+                        <strong>Grade :</strong>
+
+                        <span id="gradeAgent"></span>
+
+                    </p>
+
+                    <p>
+
+                        <strong>Téléphone :</strong>
+
+                        <span id="telephoneAgent"></span>
+
+                    </p>
+
+                    <p>
+
+                        <strong>Statut :</strong>
+
+                        <span id="statutAgent"></span>
+
+                    </p>
+
+                    <hr>
+
+                    <h3>Affectations</h3>
+
+                    <div class="unites-agent">
+
+                        <label>
+                            <input type="checkbox"
+                                   id="fiche_etat_major"
+                                   disabled>
+                            État-Major
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                   id="fiche_mary_hp"
+                                   disabled>
+                            MARY / HP
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                   id="fiche_k9"
+                                   disabled>
+                            K9
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                   id="fiche_cid"
+                                   disabled>
+                            CID
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                   id="fiche_amd"
+                                   disabled>
+                            AMD
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                   id="fiche_sheriff_academy"
+                                   disabled>
+                            Sheriff Academy
+                        </label>
+
+                    </div>
+                    <hr>
+
+<h3>Informations de service</h3>
+
+<div class="info-service">
+
+    <p>
+        <strong>Badge :</strong>
+        <span id="badgeAgent">Aucun</span>
+    </p>
+
+    <p>
+        <strong>Date de recrutement :</strong>
+        <span id="dateRecrutement">Non renseignée</span>
+    </p>
+
+    <p>
+        <strong>Supérieur :</strong>
+        <span id="superieurAgent">Non renseigné</span>
+    </p>
+
+    <p>
+        <strong>Dernière promotion :</strong>
+        <span id="promotionAgent">Non renseignée</span>
+    </p>
+
+</div>
+
+<hr>
+
+<div class="compte-bcso">
+
+    <div class="compte-header">
+
+        <h3>
+            <i class="fa-solid fa-user-shield"></i>
+            Compte BCSO
+        </h3>
+
+       <button
+    class="btn-actions"
+    onclick="toggleMenuActions()">
+
+    <i class="fa-solid fa-gear"></i>
+
+    Actions
+
 </button>
 
+    </div>
+
+    <div id="menuActions" class="menu-actions hidden">
+
+        <button onclick="copierIdentifiant()">
+
+            <i class="fa-solid fa-user"></i>
+
+            Copier l'identifiant
+
+        </button>
+
+        <button onclick="copierCode()">
+
+            <i class="fa-solid fa-key"></i>
+
+            Copier le code
+
+        </button>
+
+        <button onclick="archiverAgent()">
+
+            <i class="fa-solid fa-box-archive"></i>
+
+            Archiver l'agent
+
+        </button>
+
+    </div>
+
+    <div class="ligne-compte">
+
+        <span class="label">
+
+            Identifiant
+
+        </span>
+
+        <div class="valeur">
+
+            <span id="identifiantCarte"></span>
+
+            <button
+                class="btn-copie"
+                onclick="copierIdentifiant()">
+
+                <i class="fa-solid fa-copy"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="ligne-compte">
+
+        <span class="label">
+
+            Code
+
+        </span>
+
+        <div class="valeur">
+
+            <span id="codeCarte"></span>
+
+            <button
+                class="btn-copie"
+                onclick="copierCode()">
+
+                <i class="fa-solid fa-copy"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="ligne-compte">
+
+        <span class="label">
+
+            Statut du compte
+
+        </span>
+
+        <span class="badge-statut">
+
+            🟢 Actif
+
+        </span>
+
+    </div>
+
 </div>
 
-<div class="box">
-
-<h3>🚓 Véhicule</h3>
-
-<ul id="vehicules">
-
-<li>Aucun véhicule attribué</li>
-
-</ul>
-
-</div>
-
-<div class="box">
-
-<h3>🎓 Formations</h3>
-
-<ul id="formations">
-
-<li>Cadet</li>
-<li>Patrouille</li>
-
-</ul>
-
-</div>
-
-<div class="box">
-
-<h3>⚠ Sanctions</h3>
-
-<ul id="sanctions">
-
-<li>Aucune sanction</li>
-
-</ul>
-
-</div>
-
-<div class="box">
-
-<h3>🏆 Récompenses</h3>
-
-<ul id="recompenses">
-
-<li>Aucune récompense</li>
-
-</ul>
-
-</div>
-
-<div class="box">
-
-<h3>📋 Rapports</h3>
-
-<ul id="rapports">
-
-<li>Aucun rapport</li>
-
-</ul>
-
 </div>
 
 </div>
 
-<br>
+</section>
+<section class="bloc">
 
-<button>✏ Modifier le dossier</button>
+    <h2>
+        <i class="fa-solid fa-arrow-trend-up"></i>
+        Historique des promotions
+    </h2>
 
-<button>🖨 Imprimer</button>
+    <div id="historiquePromotions">
 
-<button onclick="window.location.href='agents.html'">
-⬅ Retour à la liste
-</button>
+        Aucune promotion enregistrée.
+
+    </div>
+
+</section>
+
+<section class="bloc">
+
+    <h2>
+        <i class="fa-solid fa-medal"></i>
+        Décorations
+    </h2>
+
+    <div id="decorationsAgent">
+
+        Aucune décoration.
+
+    </div>
+
+</section>
+
+<section class="bloc">
+
+    <h2>
+        <i class="fa-solid fa-scale-balanced"></i>
+        Sanctions
+    </h2>
+
+    <div id="sanctionsAgent">
+
+        Aucune sanction.
+
+    </div>
+
+</section>
+<section class="bloc">
+
+    <h2>
+        <i class="fa-solid fa-gun"></i>
+        Armement attribué
+    </h2>
+
+    <div id="armesAgent">
+
+        Aucune arme attribuée.
+
+    </div>
+
+</section>
+
+<section class="bloc">
+
+    <h2>
+        <i class="fa-solid fa-note-sticky"></i>
+        Notes
+    </h2>
+
+    <textarea
+        id="notesAgent"
+        rows="6"
+        readonly>
+    </textarea>
+
+</section>
+
+    </main>
 
 </div>
 

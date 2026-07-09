@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Administration | BCSO Life Santos</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <div id="sidebar"></div>
+
+
+
+    <main class="content">
+
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    <i class="fa-solid fa-user-shield"></i>
+                    Administration des utilisateurs
+                </h1>
+
+                <p>
+                    Gestion des accès BCSO
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="bloc">
+
+
+            <div class="card">
+
+
+                <input 
+                    id="username"
+                    placeholder="Identifiant">
+
+
+
+                <input 
+                    id="password"
+                    type="password"
+                    placeholder="Mot de passe">
+
+
+
+                <select id="role">
+
+
+                    <option>Sheriff</option>
+
+                    <option>Undersheriff</option>
+
+                    <option>Recruiter</option>
+
+                    <option>Deputy</option>
+
+                    <option>Cadet</option>
+
+
+                </select>
+
+
+
+                <button onclick="creerUtilisateur()">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Créer l'utilisateur
+
+                </button>
+
+
+            </div>
+
+
+
+            <br>
+
+
+            <div id="listeUtilisateurs"></div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<script src="js/menu.js"></script>
+
+<script src="js/administration.js"></script>
+
+
+</body>
+<a href="comptes-agents.html">
+    <i class="fa-solid fa-user-lock"></i>
+    Comptes Agents
+</a>
+</html>

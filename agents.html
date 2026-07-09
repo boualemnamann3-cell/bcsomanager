@@ -2,140 +2,451 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCSO Manager - Gestion des Agents</title>
+
+    <title>BCSO Manager | Agents</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
+
 
 <body>
 
-<div class="sidebar">
 
-    <div class="logo">
-        <h2>🚔 BCSO</h2>
-        <p>Manager V2</p>
-    </div>
+<div class="dashboard">
 
-    <hr>
 
-    <a href="dashboard.html">🏠 Tableau de bord</a>
-    <a href="agents.html">👮 Agents</a>
-    <a href="recrutement.html">📄 Recrutement</a>
-    <a href="formations.html">🎓 Académie</a>
-    <a href="unites.html">🏛 Unités</a>
-    <a href="armurerie.html">🔫 Armurerie</a>
-    <a href="vehicules.html">🚓 Véhicules</a>
-    <a href="rapports.html">📋 Rapports</a>
-    <a href="statistiques.html">📊 Statistiques</a>
-    <a href="parametres.html">⚙ Administration</a>
+    <!-- MENU UNIQUE -->
 
-</div>
+    <div id="sidebar"></div>
 
-<div class="content">
 
-    <h1>👮 Gestion des Agents</h1>
+
+    <!-- CONTENU -->
+
+    <main class="content">
+
+
+        <header class="topbar">
+
+
+            <div>
+
+                <h1>
+                    Gestion des Agents
+                </h1>
+
+
+                <p>
+                    Personnel du Blaine County Sheriff's Office
+                </p>
+
+            </div>
+
+
+
+            <button class="btn-principal"
+                    onclick="ajouterAgent()">
+
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Ajouter un agent
+
+
+            </button>
+
+
+        </header>
+
+
+
+        <!-- RECHERCHE -->
+
+        <section class="bloc">
+
+
+            <div class="toolbar">
+
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Rechercher un agent...">
+
+
+                <select id="filtreService">
+
+
+                    <option value="">
+                        Toutes les unités
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+        </section>        <br>
+
+
+        <!-- LISTE DES AGENTS -->
+
+        <section class="bloc">
+
+
+            <h2>
+
+                <i class="fa-solid fa-users"></i>
+
+                Liste des agents
+
+            </h2>
+
+
+
+            <div class="table-responsive">
+
+
+                <table class="agent-table">
+
+
+<thead>
+
+<tr>
+
+    <th style="width:90px;">Matricule</th>
+
+    <th style="width:160px;">Nom</th>
+
+    <th style="width:160px;">Prénom</th>
+
+    <th style="width:170px;">Grade</th>
+
+    <th style="width:90px;">État-Major</th>
+
+    <th style="width:90px;">MARY / HP</th>
+
+    <th style="width:70px;">K9</th>
+
+    <th style="width:70px;">CID</th>
+
+    <th style="width:70px;">AMD</th>
+
+    <th style="width:120px;">Sheriff Academy</th>
+
+    <th style="width:120px;">Statut</th>
+
+    <th style="width:170px;">Actions</th>
+
+</tr>
+
+</thead>
+
+
+
+                    <tbody id="listeAgents">
+
+
+                        <tr>
+
+                            <td colspan="7" class="center">
+
+                                Chargement des agents...
+
+                            </td>
+
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+        <!-- FENÊTRE AGENT -->
+
+
+        <div id="modalAgent" class="modal hidden">
+
+
+            <div class="modal-content">
+
+
+                <div class="modal-header">
+
+
+                    <h2>
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        Ajouter un agent
+
+                    </h2>
+
+
+
+                    <<button
+    type="button"
+    class="btn-fermer"
+    onclick="fermerModal()">
+
+    <i class="fa-solid fa-xmark"></i>
+
+</button>
+
+
+                </div>
+
+
+
+
+                <form id="formAgent">
+
+
+                    <div class="form-grid">                        <div class="form-group">
+
+                            <label>Matricule</label>
+
+                            <input
+                                type="text"
+                                id="matricule"
+                                required>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+    <label>Nom RP</label>
 
     <input
         type="text"
-        id="search"
-        placeholder="🔍 Rechercher un agent...">
-
-    <br><br>
-
-<button id="nouvelAgent" onclick="ouvrirPopup()">
-    ➕ Nouvel Agent
-</button>
-
-    <br><br>
-
-    <table class="agent-table">
-
-        <thead>
-
-            <tr>
-
-                <th>Matricule</th>
-
-                <th>Nom</th>
-
-                <th>Grade</th>
-
-                <th>Unité</th>
-
-                <th>Statut</th>
-
-                <th>Actions</th>
-
-            </tr>
-
-        </thead>
-
-        <tbody id="listeAgents">
-
-        </tbody>
-
-    </table>
+        id="nom"
+        placeholder="Nom"
+        required>
 
 </div>
-<!-- Fenêtre Ajouter un agent -->
 
-<div id="popupAgent" class="popup">
+<div class="form-group">
 
-<div class="popup-content">
+    <label>Prénom RP</label>
 
-<h2>➕ Nouvel Agent</h2>
-<input type="text" id="newTelephone" placeholder="Téléphone">
+    <input
+        type="text"
+        id="prenom"
+        placeholder="Prénom"
+        required>
 
-<input type="text" id="newBadge" placeholder="Numéro de badge">
+</div>
 
-<input type="date" id="newDateEntree">
 
-<input type="text" id="newMatricule" placeholder="Matricule">
 
-<input type="text" id="newNom" placeholder="Nom RP">
+                        <div class="form-group">
 
-<select id="newGrade">
+                            <label>Grade</label>
 
-<option>Rookie</option>
-<option>Deputy I</option>
-<option>Deputy II</option>
-<option>Deputy III</option>
-<option>Deputy Senior</option>
-<option>Sergeant I</option>
-<option>Sergeant II</option>
-<option>Lieutenant</option>
-<option>Capitaine</option>
-<option>Commandant</option>
+                            <select id="grade" required>
+
+                                <option value="">
+                                    Choisir
+                                </option>
+<option value="">Choisir</option>
+
+<option>Sheriff</option>
 <option>Sheriff Adjoint</option>
 
-</select>
+<option disabled>──────── Sheriff Office ────────</option>
 
-<select id="newUnite">
+<option>Commandant</option>
+<option>Capitaine</option>
+<option>Lieutenant</option>
+<option>Sergeant II</option>
+<option>Sergeant I</option>
+<option>Deputy Senior</option>
+<option>Deputy III</option>
+<option>Deputy II</option>
+<option>Deputy I</option>
+<option>Rookie</option>
+                            </select>
 
-<option>Commandement</option>
-<option>Patrouille</option>
-<option>CID</option>
-<option>MARY / HP</option>
-<option>K9</option>
-<option>AMD</option>
+                        </div>
+<div class="form-group full">
 
-</select>
+    <label>Affectations</label>
 
-<button onclick="enregistrerAgent()">
-💾 Enregistrer
-</button>
+    <div class="unites-grid">
 
-<button onclick="fermerPopup()">
-❌ Fermer
-</button>
+        <label class="check-unite">
+            <input type="checkbox" id="etat_major">
+            État-Major
+        </label>
+
+        <label class="check-unite">
+            <input type="checkbox" id="mary_hp">
+            MARY / HP
+        </label>
+
+        <label class="check-unite">
+            <input type="checkbox" id="k9">
+            K9
+        </label>
+
+        <label class="check-unite">
+            <input type="checkbox" id="cid">
+            CID
+        </label>
+
+        <label class="check-unite">
+            <input type="checkbox" id="amd">
+            AMD
+        </label>
+
+        <label class="check-unite">
+            <input type="checkbox" id="sheriff_academy">
+            Sheriff Academy
+        </label>
+
+    </div>
 
 </div>
 
+                        <div class="form-group">
+
+                            <label>Téléphone</label>
+
+                            <input
+                                type="text"
+                                id="telephone">
+
+                        </div>
+<div class="form-group">
+
+    <label>Badge</label>
+
+    <input
+        type="text"
+        id="badge">
+
 </div>
-<script src="js/database.js"></script>
+
+<div class="form-group">
+
+    <label>Date d'entrée</label>
+
+    <input
+        type="date"
+        id="dateEntree">
+
+</div>
+
+<div class="form-group">
+
+    <label>Supérieur</label>
+
+    <input
+        type="text"
+        id="superieur">
+
+</div>
+
+<div class="form-group">
+
+    <label>Dernière promotion</label>
+
+    <input
+        type="date"
+        id="datePromotion">
+
+</div>
+
+<div class="form-group full">
+
+    <label>Notes</label>
+
+    <textarea
+        id="notes"
+        rows="5"></textarea>
+
+</div>
+
+
+                        <div class="form-group">
+
+                            <label>Statut</label>
+
+                            <select id="statut">
+
+                                <option>En service</option>
+                                <option>Hors service</option>
+                                <option>Congé</option>
+                                <option>Suspendu</option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="modal-footer">
+
+    <button
+        type="submit"
+        class="btn-principal">
+
+        <i class="fa-solid fa-floppy-disk"></i>
+
+        Enregistrer
+
+    </button>
+
+</div>
+
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </main>
+
+
+</div>
+
+
+
+
+<script src="js/menu.js"></script>
+
 <script src="js/agents.js"></script>
+
 
 </body>
 

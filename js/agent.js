@@ -1,8 +1,10 @@
 // =====================================
-// BCSO MANAGER - DOSSIER AGENT
+// BCSO MANAGER - FICHE AGENT
 // =====================================
 
-const agent = JSON.parse(localStorage.getItem("agentSelectionne"));
+const agent = JSON.parse(
+    localStorage.getItem("agentSelectionne")
+);
 
 if (!agent) {
 
@@ -12,90 +14,257 @@ if (!agent) {
 
 }
 
-// Informations principales
-document.getElementById("nomAgent").textContent = agent.nom;
-document.getElementById("matriculeAgent").textContent = agent.matricule;
-document.getElementById("gradeAgent").textContent = agent.grade;
-document.getElementById("uniteAgent").textContent = agent.unite;
-document.getElementById("statutAgent").textContent = agent.statut;
+// ==============================
+// REMPLISSAGE DE LA FICHE
+// ==============================
+
+document.getElementById("nomAgent").textContent =
+    `${agent.prenom || ""} ${agent.nom || ""}`.trim();
+
+document.getElementById("matriculeAgent").textContent =
+    agent.matricule || "";
+
+document.getElementById("gradeAgent").textContent =
+    agent.grade || "";
 
 document.getElementById("telephoneAgent").textContent =
-agent.telephone || "Non renseigné";
+    agent.telephone || "";
+
+document.getElementById("statutAgent").textContent =
+    agent.statut || "";
 
 document.getElementById("badgeAgent").textContent =
-agent.badge || "Non attribué";
+    agent.badge || "Aucun";
 
-document.getElementById("dateEntreeAgent").textContent =
-agent.dateEntree || "Non renseignée";
+document.getElementById("dateRecrutement").textContent =
+    agent.dateEntree || "Non renseignée";
 
-document.getElementById("emailAgent").textContent =
-agent.email || "Aucun";
+document.getElementById("superieurAgent").textContent =
+    agent.superieur || "Non renseigné";
 
-document.getElementById("groupeAgent").textContent =
-agent.groupe || "Inconnu";
+document.getElementById("promotionAgent").textContent =
+    agent.datePromotion || "Non renseignée";
+    
 
-// =====================
-// ARMES
-// =====================
+document.getElementById("notesAgent").value =
+    agent.notes || "";
 
-const listeArmes = document.getElementById("armes");
+    document.getElementById("identifiantCarte").textContent =
+    agent.identifiant || "";
 
-listeArmes.innerHTML = "";
+document.getElementById("codeCarte").textContent =
+    agent.code || "";
 
-if(agent.armes.length===0){
+// ==============================
+// COMPTE BCSO
+// ==============================
 
-    listeArmes.innerHTML="<li>Aucune arme</li>";
+function copierIdentifiant() {
 
-}else{
+    if (!agent.identifiant) {
+        alert("Aucun identifiant.");
+        return;
+    }
 
-    agent.armes.forEach(arme=>{
+    navigator.clipboard.writeText(agent.identifiant);
 
-        listeArmes.innerHTML += `<li>🔫 ${arme}</li>`;
-
-    });
-
-}
-
-// =====================
-// VEHICULES
-// =====================
-
-const listeVehicules=document.getElementById("vehicules");
-
-listeVehicules.innerHTML="";
-
-if(agent.vehicules.length===0){
-
-listeVehicules.innerHTML="<li>Aucun véhicule</li>";
-
-}else{
-
-agent.vehicules.forEach(v=>{
-
-listeVehicules.innerHTML+=`<li>🚓 ${v}</li>`;
-
-});
+    alert("Identifiant copié.");
 
 }
 
-// =====================
-// FORMATIONS
-// =====================
+function copierCode() {
 
-const listeFormations=document.getElementById("formations");
+    if (!agent.code) {
+        alert("Aucun code.");
+        return;
+    }
 
-listeFormations.innerHTML="";
+    navigator.clipboard.writeText(agent.code);
 
-if(agent.formations.length===0){
+    alert("Code copié.");
 
-listeFormations.innerHTML="<li>Aucune formation</li>";
+}
 
-}else{
+// ==============================
+// PHOTO
+// ==============================
 
-agent.formations.forEach(f=>{
+if (agent.photo) {
 
-listeFormations.innerHTML+=`<li>🎓 ${f}</li>`;
+    document.getElementById("photoAgent").src =
+        agent.photo;
 
-});
+}
+
+// ==============================
+// UNITÉS
+// ==============================
+
+document.getElementById("fiche_etat_major").checked =
+    !!agent.etat_major;
+
+document.getElementById("fiche_mary_hp").checked =
+    !!agent.mary_hp;
+
+document.getElementById("fiche_k9").checked =
+    !!agent.k9;
+
+document.getElementById("fiche_cid").checked =
+    !!agent.cid;
+
+document.getElementById("fiche_amd").checked =
+    !!agent.amd;
+
+document.getElementById("fiche_sheriff_academy").checked =
+    !!agent.sheriff_academy;
+    // ==============================
+// ARMES ATTRIBUÉES
+// ==============================
+
+async function chargerArmesAgent() {
+
+    try {
+
+        const reponse = await fetch(
+            `http://localhost:3000/api/attributions/${agent.id}`
+        );
+
+        const armes = await reponse.json();
+
+        console.log("Agent :", agent.id);
+        console.log("Armes :", armes);
+
+        const zone = document.getElementById("armesAgent");
+
+        if (!zone) return;
+
+        if (!armes.length) {
+
+            zone.innerHTML = "<p>Aucune arme attribuée.</p>";
+
+            return;
+
+        }
+
+        zone.innerHTML = "";
+
+        armes.forEach(arme => {
+
+            zone.innerHTML += `
+
+<div class="arme-card">
+
+    <h3>${arme.nom}</h3>
+
+    <p><strong>Type :</strong> ${arme.type}</p>
+
+    <p><strong>Calibre :</strong> ${arme.calibre}</p>
+
+    <p><strong>Quantité :</strong> ${arme.quantite}</p>
+
+    <p><strong>Attribuée le :</strong> ${arme.date_attribution}</p>
+
+    <button
+    class="btn-principal"
+    onclick="restituerArme(${arme.attribution_id});">
+
+    <i class="fa-solid fa-rotate-left"></i>
+    Restituer
+
+</button>
+
+</div>
+
+`;
+
+        });
+
+    } catch (e) {
+
+        console.error(e);
+
+    }
+
+}
+
+chargerArmesAgent();
+// ==============================
+// RESTITUER UNE ARME
+// ==============================
+async function restituerArme(id){
+
+    if(!confirm("Supprimer cette attribution ?")) return;
+
+    try{
+
+        const reponse = await fetch(
+
+            `http://localhost:3000/api/attributions/supprimer/${id}`,
+
+            {
+
+                method:"DELETE"
+
+            }
+
+        );
+
+        const resultat = await reponse.json();
+
+        alert(resultat.message);
+
+        chargerArmesAgent();
+
+    }
+
+    catch(e){
+
+        console.error(e);
+
+    }
+
+}
+// ==========================
+// ARCHIVER UN AGENT
+// ==========================
+
+async function archiverAgent() {
+
+    const confirmation = confirm(
+        `Voulez-vous vraiment archiver ${agent.prenom} ${agent.nom} ?`
+    );
+
+    if (!confirmation) return;
+
+    try {
+
+        const reponse = await fetch(
+            `http://localhost:3000/api/agents/${agent.id}/archive`,
+            {
+                method: "PUT"
+            }
+        );
+
+        const resultat = await reponse.json();
+
+        alert(resultat.message);
+
+        window.location.href = "agents.html";
+
+    } catch (e) {
+
+        console.error(e);
+
+        alert("Impossible d'archiver l'agent.");
+
+    }
+
+}
+function toggleMenuActions() {
+
+    document
+        .getElementById("menuActions")
+        .classList
+        .toggle("hidden");
 
 }

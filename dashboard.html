@@ -1,94 +1,271 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BCSO Manager</title>
 
-<link rel="stylesheet" href="css/style.css">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BCSO Manager | Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
-<script src="js/dashboard.js"></script><body>
+<body>
 
-<div class="sidebar">
+<div id="sidebar"></div>
 
-<div class="logo">
-<h2>🚔 BCSO</h2>
-<p>Manager v2</p>
+      
+    <!-- CONTENU -->
+    <main class="content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>Tableau de bord</h1>
+                <p>Bienvenue dans le BCSO Manager</p>
+            </div>
+
+            <div class="clock">
+                <div id="heure">00:00:00</div>
+                <div id="date">Chargement...</div>
+            </div>
+
+        </header>
+
+<!-- BANNIERE -->
+<section class="bloc hero">
+
+    <div class="hero-left">
+
+        <span class="hero-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            BCSO MANAGEMENT SYSTEM
+        </span>
+
+        <h1>
+            Tableau de bord du Blaine County Sheriff's Office
+        </h1>
+
+        <p>
+            Gérez les agents, les rapports, les recrutements,
+            les unités et l'ensemble des services du BCSO
+            depuis une seule interface.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="btn-principal" onclick="location.href='agents.html'">
+                <i class="fa-solid fa-user-plus"></i>
+                Ajouter un agent
+            </button>
+
+            <button class="btn-principal" onclick="location.href='rapports.html'">
+                <i class="fa-solid fa-file-circle-plus"></i>
+                Nouveau rapport
+            </button>
+
+            <button class="btn-principal" onclick="location.href='recrutement.html'">
+                <i class="fa-solid fa-user-check"></i>
+                Recrutement
+            </button>
+
+            <button class="btn-principal" onclick="location.href='armurerie.html'">
+                <i class="fa-solid fa-gun"></i>
+                Armurerie
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+        <i class="fa-solid fa-shield-halved hero-logo"></i>
+    </div>
+
+</section>
+
+        </section>
+
+        <!-- BLOCS -->
+         <!-- ACTIONS RAPIDES -->
+
+<<!-- Actions rapides supprimées -->
+
+    <div class="card" onclick="location.href='recrutement.html'">
+        <i class="fa-solid fa-user-check"></i>
+        <h3>Recrutement</h3>
+        <p>Voir les candidatures</p>
+    </div>
+
+    <div class="card" onclick="location.href='unites.html'">
+        <i class="fa-solid fa-users-gear"></i>
+        <h3>Unités</h3>
+        <p>Gérer les affectations</p>
+    </div>
+
+</section>
+<!-- EFFECTIFS PAR UNITÉ -->
+
+<section class="bloc">
+
+    <h2>
+
+        <i class="fa-solid fa-users"></i>
+
+        Effectifs par unité
+
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <i class="fa-solid fa-star"></i>
+            <h2 id="nbEtatMajor">0</h2>
+            <p>État-Major</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-car-side"></i>
+            <h2 id="nbMary">0</h2>
+            <p>MARY / HP</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-dog"></i>
+            <h2 id="nbK9">0</h2>
+            <p>K9</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-user-secret"></i>
+            <h2 id="nbCID">0</h2>
+            <p>CID</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-bomb"></i>
+            <h2 id="nbAMD">0</h2>
+            <p>AMD</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2 id="nbAcademy">0</h2>
+            <p>Sheriff Academy</p>
+        </div>
+
+    </div>
+
+</section>
+<!-- CENTRE DE COMMANDEMENT -->
+
+<section class="dashboard-grid">
+
+    <div class="bloc">
+
+        <h2>
+            <i class="fa-solid fa-bell"></i>
+            Notifications
+        </h2>
+
+        <div id="notifications">
+
+            <div class="notification">
+                📄 Aucun rapport en attente
+            </div>
+
+            <div class="notification">
+                👮 Aucun agent à valider
+            </div>
+
+            <div class="notification">
+                📋 Aucune candidature en attente
+            </div>
+
+            <div class="notification">
+                🔫 Stock armurerie normal
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bloc">
+
+        <h2>
+            <i class="fa-solid fa-calendar-days"></i>
+            Évènements du jour
+        </h2>
+
+        <div id="evenements">
+
+            <p>Aucun évènement aujourd'hui.</p>
+
+        </div>
+
+    </div>
+
+</section>
+        <section class="dashboard-grid">
+
+            <div class="bloc">
+
+                <h2>
+                    <i class="fa-solid fa-user-plus"></i>
+                    Derniers agents
+                </h2>
+
+                <div id="listeAgents"></div>
+
+            </div>
+
+            <div class="bloc">
+
+                <h2>
+                    <i class="fa-solid fa-bullhorn"></i>
+                    Dernières annonces
+                </h2>
+
+                <div id="annonces"></div>
+
+            </div>
+
+            <div class="bloc">
+
+                <h2>
+                    <i class="fa-solid fa-chart-column"></i>
+                    Statistiques
+                </h2>
+
+                <canvas id="graphique" height="230"></canvas>
+
+            </div>
+
+            <div class="bloc">
+
+                <h2>
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Activité récente
+                </h2>
+
+                <div id="activiteRecente"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
 </div>
 
-<a href="dashboard.html">🏠 Tableau de bord</a>
-<a href="agents.html">👮 Agents</a>
-<a href="recrutement.html">📄 Recrutement</a>
-<a href="formations.html">🎓 Académie</a>
-<a href="unites.html">🏛 Unités</a>
-<a href="armurerie.html">🔫 Armurerie</a>
-<a href="vehicules.html">🚓 Véhicules</a>
-<a href="rapports.html">📋 Rapports</a>
-<a href="statistiques.html">📈 Statistiques</a>
-<a href="parametres.html">⚙ Administration</a>
-
-</div>
-
-<div class="content">
-
-<h1>Bienvenue Sheriff</h1>
-
-<div class="dashboard">
-
-<div class="box">
-<h3>👮 Effectif</h3>
-<h1 id="nbAgents">0</h1>
-</div>
-
-<div class="box">
-<h3>🏛 Unités</h3>
-<h1>4</h1>
-</div>
-
-<div class="box">
-<h3>🎓 Formations</h3>
-<h1>12</h1>
-</div>
-
-<div class="box">
-<h3>📋 Rapports</h3>
-<h1>0</h1>
-</div>
-
-<div class="box">
-<h3>🚓 Véhicules</h3>
-<h1>18</h1>
-</div>
-
-<div class="box">
-<h3>🔫 Armes</h3>
-<h1>65</h1>
-</div>
-
-</div>
-
-<h2>Actualités BCSO</h2>
-
-<div class="card">
-
-<p>✅ Création de la CID.</p>
-
-<p>🔄 Fusion MARY / HP.</p>
-
-<p>🟡 AMD en sommeil.</p>
-
-<p>🟡 K9 en sommeil.</p>
-
-<p>❌ Dissolution SRT.</p>
-
-<p>❌ Dissolution MCD.</p>
-
-</div>
-
-</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/dashboard.js"></script>
 
 </body>
-
 </html>
