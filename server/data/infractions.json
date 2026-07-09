@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "categorie": "Infraction",
+        "nom": "Activité illégale",
+        "amende": 1500,
+        "prison": 0
+    },
+    {
+        "id": 2,
+        "categorie": "Infraction",
+        "nom": "Abandon d'activité d'entreprise",
+        "amende": 3000,
+        "prison": 0
+    },
+    {
+        "id": 3,
+        "categorie": "Infraction",
+        "nom": "Non-conservation de contrat de travail",
+        "amende": 1000,
+        "prison": 0
+    },
+    {
+        "id": 4,
+        "categorie": "Infraction",
+        "nom": "Rassemblement illégal",
+        "amende": 3500,
+        "prison": 0
+    },
+    {
+        "id": 5,
+        "categorie": "Infraction",
+        "nom": "Conduite dangereuse",
+        "amende": 4500,
+        "prison": 0
+    }
+]
